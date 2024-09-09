@@ -1,0 +1,37 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Urgence index{% endblock %}
+
+{% block body %}
+    <h1>Urgence index</h1>
+
+
+
+    <div class="col-xs1">
+        <form id="filters">
+            <p>filtrer</p>
+            <p>
+                <input type="checkbox" name="0" id="urg0" value="0">
+                <label for="urg0">Non traité</label>
+            </p>
+            <p>
+                <input type="checkbox" name="1" id="urg1" value="1">
+                <label for="urg1">En cours</label>
+            </p>
+            <p>
+                <input type="checkbox" name="2" id="urg2" value="2">
+                <label for="urg2">Terminé</label>
+            </p>
+        </form>
+    </div>
+
+    <div class="col-xs1 col-sm4" id="content">
+        {% include "urgence/_content.html.twig" %}
+    </div>
+    <a href="{{ path('stats') }}">Statistiques</a>
+{% endblock %}
+
+
+{% block javascripts  %}
+    <script src="{{ asset('assets/js/filters.js') }}"></script>
+{% endblock %}

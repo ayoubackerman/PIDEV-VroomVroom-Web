@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reponse
+{% endblock %}
+
+{% block body %}
+	<h1>Reponse</h1>
+
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>IdReponse</th>
+				<td>{{ reponse.idReponse }}</td>
+			</tr>
+			<tr>
+				<th>IdReclamation</th>
+				<td>{{ reponse.idReclamation }}</td>
+			</tr>
+			<tr>
+				<th>IdUser</th>
+				<td>{{ reponse.idUser }}</td>
+			</tr>
+			<tr>
+				<th>Reponse</th>
+				<td>{{ reponse.reponse }}</td>
+			</tr>
+			<tr>
+				<th>Temps</th>
+				<td>{{ reponse.temps ? reponse.temps|date('Y-m-d H:i:s') : '' }}</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<a href="{{ path('app_reponse_index') }}">back to list</a>
+
+	<a href="{{ path('app_reponse_edit', {'idReponse': reponse.idReponse}) }}">edit</a>
+
+	{{ include('reponse/_delete_form.html.twig') }}
+{% endblock %}

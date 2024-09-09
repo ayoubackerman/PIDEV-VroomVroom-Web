@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Votre Reclamation
+{% endblock %}
+
+{% block body %}
+
+	<div class="wheel-start">
+		<div class="container padd-lr0">
+			<header class="wheel-header marg-lg-b100 marg-lg-t200  marg-md-b0 marg-md-t0">
+				<h1 style=" margin-top: -370px; margin-left: 161px;">Modifier Votre Reclamation
+				</h1>
+			</header>
+			<div class="col-lg-6 col-lg-pull-6  padd-lr0 " style="margin-top: -71px ; margin-left: 882px;">
+				<div
+					class="wheel-start-form">
+
+
+					<!-- General Form Elements -->
+					{{ form_start(f,{attr:{novalidate:'wheel-start-form'}}) }}
+
+
+					<label for="input-val12">
+						<span>reclamation</span>
+						{{ form_widget(f.reclamation,{'attr':{'class':'form-control'}}) }}
+						{{ form_errors(f.reclamation,{'attr':{'class':'text-danger'}}) }}
+					</label>
+
+					<label for="input-val12">
+						<span>reclamation</span>
+						{{ form_widget(f.typeReclamation,{'attr':{'class':'form-control'}}) }}
+						{{ form_errors(f.typeReclamation,{'attr':{'class':'text-danger'}}) }}
+					</label>
+
+
+					<center>{{ form_widget(f.Valider,{'attr':{'class':'wheel-btn'}}) }}</center>
+					<a href="{{ path('app_reclamation_index') }}">back to list</a>
+				</div>
+			</div>
+
+
+			<div style="display:none">
+				<div class="col-12">
+					<label for="youraddr" class="form-label">resolution</label>
+					{{ form_widget(f.resolution,{'attr':{'class':'form-control'}}) }}
+					<div class="invalid-feedback">resolution</div>
+					{{ form_errors(f.resolution,{'attr':{'class':'text-danger'}}) }}
+
+					<label for="youraddr" class="form-label">temps</label>
+					{{ form_widget(f.temps,{'attr':{'class':'form-control'}}) }}
+					<div class="invalid-feedback">temps</div>
+					{{ form_errors(f.temps,{'attr':{'class':'text-danger'}}) }}
+
+					<label for="input-val11">
+						<span>iduser</span>
+
+						{{ form_widget(f.idUser,{'attr':{'class':'input-val11'}}) }}
+						{{ form_errors(f.idUser,{'attr':{'class':'text-danger'}}) }}
+					</label>
+
+
+				</div>
+			</div>
+			{{ form_end(f) }}
+			<script src="{{asset('public/logjs.js')}}"></script>
+		</div>
+	</div>
+</div>
+
+{# {{ include('reclamation/_delete_form.html.twig') }} #}
+{# {{ include('reclamation/_form.html.twig', {'button_label': 'Update'}) }} #}</div></div></div></div>{% endblock %}

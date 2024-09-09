@@ -1,0 +1,52 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Trajet{% endblock %}
+
+{% block body %}
+    <h1 style="color: #007bff; font-family: 'Times New Roman', Times, serif;">
+   <br>
+    <i class="fas fa-car"></i> Trajet</h1>
+ <br>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>IdTrajet</th>
+                <td>{{ trajet.idTrajet }}</td>
+            </tr>
+            <tr>
+                <th>VilleDepart</th>
+                <td>{{ trajet.villeDepart }}</td>
+            </tr>
+            <tr>
+                <th>VilleDarrive</th>
+                <td>{{ trajet.villeDarrive }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ trajet.prix }}</td>
+            </tr>
+            <tr>
+                <th>NbrPlace</th>
+                <td>{{ trajet.nbrPlace }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ trajet.date }}</td>
+            </tr>
+            <tr>
+                <th>ModePaiement</th>
+                <td>{{ trajet.modePaiement }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_trajet_index') }}" class="btn btn-primary">
+  <i class="bi bi-arrow-left"></i> Back to List
+</a>
+<br>
+<br>
+<a href="{{ path('app_trajet_edit', {'idTrajet': trajet.idTrajet}) }}" class="btn btn-primary">
+  <i class="bi bi-pencil-square"></i> Edit
+</a>    <br>   {{ include('trajet/_delete_form.html.twig') }}
+
+{% endblock %}

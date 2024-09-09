@@ -1,0 +1,19 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}New Trajet{% endblock %}
+
+{% block body %}
+   <h1 style="color: #007bff; font-family: 'Times New Roman', Times, serif;">
+   <br>
+    <i class="fas fa-car"></i> Ajouter Trajet</h1>
+    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+<br>
+<br>
+    {{ include('trajet/_form.html.twig') }}
+<br>
+<br>
+      <a href="{{ path('app_trajet_index') }}" class="btn btn-primary">
+  <i class="bi bi-arrow-left"></i> Back to List
+  </a>
+<br>
+{% endblock %}

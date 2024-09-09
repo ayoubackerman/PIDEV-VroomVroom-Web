@@ -1,0 +1,50 @@
+<table class="table">
+    <thead>
+    <tr>
+        <th>IdUrgence</th>
+        <th>IdTrajet</th>
+        <th>IdVoiture</th>
+        <th>Localisation</th>
+        <th>Description</th>
+        <th>Statuts</th>
+        <th>Temps</th>
+        <th>actions</th>
+    </tr>
+    </thead>
+    <tbody>
+
+
+
+
+
+    {% for urgence in urgences %}
+        <tr>
+            <td>{{ urgence.idUrgence }}</td>
+            <td>{{ urgence.idTrajet.idTrajet }}</td>
+            {% if urgence.idVoiture is not null %}
+                <td>{{ urgence.idVoiture.idVoiture }}</td>
+            {% else %}
+                <td> N/A </td>
+            {% endif %}
+            <td>{{ urgence.localisation }}</td>
+            <td>{{ urgence.description }}</td>
+            <td>{{ urgence.statuts }}</td>
+            <td>{{ urgence.temps }}</td>
+            <td>
+                <a href="{{ path('app_urgence_show', {'idUrgence': urgence.idUrgence}) }}">show</a>
+                <a href="{{ path('app_urgence_edit', {'idUrgence': urgence.idUrgence}) }}">edit</a>
+            </td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="8">no records found</td>
+        </tr>
+    {% endfor %}
+
+
+
+
+
+
+    </tbody>
+</table>

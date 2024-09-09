@@ -1,0 +1,58 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}New Urgence 
+{% endblock %}
+
+{% block body %}
+
+	<div class="wheel-start">
+		<div class="container padd-lr0" style="margin-left: 1065px;">
+			<div class="col-lg-6 col-lg-pull-6  padd-lr0 " style="margin-top: -183px;">
+				<div
+					class="wheel-start-form">
+
+					<!-- General Form Elements -->
+					{{ form_start(f,{attr:{novalidate:'wheel-start-form'}}) }}
+
+					<label for="input-val11">
+						<span>id trajet </span>
+
+						{{ form_widget(f.idTrajet,{'attr':{'class':'input-val11'}}) }}
+						{{ form_errors(f.idTrajet,{'attr':{'class':'text-danger'}}) }}
+					</label>
+
+					<label for="input-val12">
+						<span>localisation</span>
+						{{ form_widget(f.localisation,{'attr':{'class':'form-control'}}) }}
+
+						{{ form_errors(f.localisation,{'attr':{'class':'text-danger'}}) }}
+					</label>
+
+					<label for="input-val12">
+						<span>description</span>
+						{{ form_widget(f.description,{'attr':{'class':'form-control'}}) }}
+						{{ form_errors(f.description,{'attr':{'class':'text-danger'}}) }}
+					</label>
+
+
+					<center>{{ form_widget(f.valider,{'attr':{'class':'wheel-btn'}}) }}</center>
+				</div>
+			</div>
+
+
+			<div style="display:none">
+				<div class="col-12">
+					
+					{{ form_widget(f.idVoiture,{'attr':{'class':'form-control'}}) }}
+					<div class="invalid-feedback">idVoiture</div>
+					{{ form_errors(f.idVoiture,{'attr':{'class':'text-danger'}}) }}
+
+
+				</div>
+			</div>
+			{{ form_end(f) }}
+			<script src="{{asset('public/logjs.js')}}"></script>
+		</div>
+	</div>
+</div>{% endblock %}

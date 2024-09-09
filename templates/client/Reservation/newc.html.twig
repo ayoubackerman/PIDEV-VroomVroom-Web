@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Reservation{% endblock %}
+
+{% block body %}
+<img src="{{asset('images/bg7.jpg')}}" alt="" style="margin: 0;>
+	<div class="row" style="display: flex;align-items: center;justify-content: center;margin-top:150px;margin-left:10px;">
+		<div class="col-lg-10" style="margin-left:100px; margin-rigth:100px;">
+
+</div>
+</div>
+    <br>
+   <div class="container text-center border border-warning p-3">
+  <h1 style="color: #43aeff; font-family: 'Times New Roman', Times, serif;">
+    <i i class="fas fa-car" style="color: orange;"></i> <span style="color: orange;">Ajouter Reservation</span>
+</h1>
+ <br>
+  <br>
+   <br>
+    <br>
+</div>
+
+<div class="wheel-start" >
+    <div class="container padd-lr0" style="margin-left: 1065px;">
+        <div class="col-lg-6 col-lg-pull-6  padd-lr0 " style="margin-top: -183px;" >
+            <div class="wheel-start-form">
+
+
+                <div class="card-body">
+                    {{ form_start(form) }}
+                     <br>
+                      <br>
+                    {{ form_widget(form) }}
+                    <div class="d-flex justify-content-between mt-3">
+                        <a href="{{ path('app_trajet_index_client') }}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Retour</a>
+                         <a href="{{ path('app_reservation_indexc') }}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> liste reservation</a>
+                       
+<button type="submit"  class="btn btn-primary">ajouter</button>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+ <br>
+
+
+
+ 
+{% endblock %}

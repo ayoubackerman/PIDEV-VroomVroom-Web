@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reservation{% endblock %}
+
+{% block body %}
+    <br>
+   <h1 style="color: #007bff; font-family: 'Times New Roman', Times, serif;">
+   <br>
+    <i class="fas fa-book"></i> Ajouter Reservation</h1>
+ <br>
+<div class="wheel-start" >
+    <div class="container padd-lr0" style="margin-left: 1065px;">
+        <div class="col-lg-6 col-lg-pull-6  padd-lr0 " style="margin-top: -183px;" >
+            <div class="wheel-start-form">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>IdReservation</th>
+                <td>{{ reservation.idReservation }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_reservation_indexc') }}"class="btn btn-primary">
+  <i class="bi bi-arrow-left"></i> Back to List
+</a>
+<br>
+<br>
+
+    <a href="{{ path('app_reservation_edit', {'idReservation': reservation.idReservation}) }}"class="btn btn-primary">
+  <i class="bi bi-pencil-square"></i> Edit
+</a>    <br> 
+
+    {{ include('client/Reservation/_delete_form.html.twig') }}
+    </div>
+</div>
+</div>
+{% endblock %}

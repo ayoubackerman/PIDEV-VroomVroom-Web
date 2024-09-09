@@ -1,0 +1,49 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}VoitureUrgence index{% endblock %}
+
+{% block body %}
+    <h1>VoitureUrgence index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdVoiture</th>
+                <th>Modele</th>
+                <th>Marque</th>
+                <th>Matricule</th>
+                <th>NombrePlace</th>
+                <th>Statuts</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for voiture_urgence in voiture_urgences.data %}
+            <tr>
+                <td>{{ voiture_urgence.idVoiture }}</td>
+                <td>{{ voiture_urgence.modele }}</td>
+                <td>{{ voiture_urgence.marque }}</td>
+                <td>{{ voiture_urgence.matricule }}</td>
+                <td>{{ voiture_urgence.nombrePlace }}</td>
+                <td>{{ voiture_urgence.statuts }}</td>
+                <td>{{ voiture_urgence.image }}</td>
+                <td>
+                    <a href="{{ path('app_voiture_urgence_show', {'idVoiture': voiture_urgence.idVoiture}) }}">show</a>
+                    <a href="{{ path('app_voiture_urgence_edit', {'idVoiture': voiture_urgence.idVoiture}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        {% set path = 'app_voiture_urgence_index' %}
+        {% set pages = voiture_urgences.pages %}
+        {% set currentPage = voiture_urgences.page %}
+        {% include "voiture_urgence/_pagination.html.twig" %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_voiture_urgence_new') }}">Create new</a>
+{% endblock %}

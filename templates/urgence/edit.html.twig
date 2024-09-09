@@ -1,0 +1,65 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Edit Urgence
+{% endblock %}
+
+{% block body %}
+<center>
+	<div class="wheel-start" style="margin-left: 400px; margin-top:400px;">
+		<div class="container padd-lr0">
+			<div class="col-lg-6 col-lg-pull-6  padd-lr0 " style="margin-top: -183px;">
+				<div
+					class="wheel-start-form">
+
+					<!-- General Form Elements -->
+					{{ form_start(f,{attr:{novalidate:'wheel-start-form'}}) }}
+					
+					<label for="input-val11">
+						<span>id Voiture
+						</span>
+
+						{{ form_widget(f.idVoiture,{'attr':{'class':'input-val11'}}) }}
+						{{ form_errors(f.idVoiture,{'attr':{'class':'text-danger'}}) }}
+					</label>
+
+
+					<label for="input-val12">
+						<span>statuts</span>
+						{{ form_widget(f.statuts,{'attr':{'class':'form-control'}}) }}
+						{{ form_errors(f.statuts,{'attr':{'class':'text-danger'}}) }}
+					</label>
+
+
+					<center>{{ form_widget(f.valider,{'attr':{'class':'wheel-btn'}}) }}</center>
+				</div>
+			</div>
+
+
+			<div style="display:none">
+
+				<label for="input-val12">
+					<span>description</span>
+					{{ form_widget(f.description,{'attr':{'class':'form-control'}}) }}
+					{{ form_errors(f.description,{'attr':{'class':'text-danger'}}) }}
+				</label>
+
+				<label for="input-val12">
+					<span>localisation</span>
+					{{ form_widget(f.localisation,{'attr':{'class':'form-control'}}) }}
+
+					{{ form_errors(f.localisation,{'attr':{'class':'text-danger'}}) }}
+				</label>
+				{{ form_widget(f.idTrajet,{'attr':{'class':'input-val11'}}) }}
+				{{ form_errors(f.idTrajet,{'attr':{'class':'text-danger'}}) }}
+
+			</div>
+			{{ form_end(f) }}
+
+			<a href="{{ path('app_urgence_index') }}">back to list</a>
+
+			{{ include('urgence/_delete_form.html.twig') }}
+			<script src="{{asset('public/logjs.js')}}"></script>
+		</div>
+	</div>
+</div>
+</center>{% endblock %}

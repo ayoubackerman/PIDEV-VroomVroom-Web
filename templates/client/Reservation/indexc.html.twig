@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reservation index{% endblock %}
+
+{% block body %}
+<img src="{{asset('images/bg7.jpg')}}" alt="" style="margin: 0;>
+	<div class="row" style="display: flex;align-items: center;justify-content: center;margin-top:150px;margin-left:10px;">
+		<div class="col-lg-10" style="margin-left:100px; margin-rigth:100px;">
+
+		</div>
+	</div>
+	<br>
+	<br>
+
+	<h1 style="color: #007bff; font-family: 'Times New Roman', Times, serif;">
+		<i class="fas fa-book"></i> Mes Reservation
+	</h1>
+
+	<br>
+	<br>
+	<style>
+		.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background-color: blue;
+}
+
+		.container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+		.card-text {
+			padding-left: 100px;
+			padding-right: 100px;
+		}
+		.btn {
+			padding-left: 50px;
+			padding-right: 10px;
+		}
+
+		.card {
+			width: 500px;
+			margin: 0 auto;
+		}
+
+		.card + .card {
+			margin-top: 20px;
+			border-top: 1px solid #dee2e6;
+		}
+
+	</style>
+
+	<div class="row">
+  {% for reservation in pagination%}
+    <div class="col-lg-4 mb-4">
+      <div class="card bg-light">
+      <br>
+      <br>
+        <div class="card-body">
+        
+          <p class="card-text"><span class="text-primary"><i class="fas fa-user"></i> IdUser:</span> {{ reservation.idUser }}</p>
+<p class="card-text"><span class="text-danger"><i class="fas fa-route"></i> IdTrajet:</span> {{ reservation.idTrajet }}</p>
+<h5 class="card-title"><i class="fas fa-ticket-alt"></i> <span class="text-success">Numéro de réservation:</span> {{ reservation.idReservation }}</h5>
+
+          <hr>
+          <div class="d-flex justify-content-between">
+            <a href="{{ path('app_reservation_showc', {'idReservation': reservation.idReservation}) }}" class="btn btn-primary"><i class="fa fa-eye"></i> Voir</a>
+            <a href="{{ path('app_reservation_edit', {'idReservation': reservation.idReservation}) }}" class="btn btn-success"><i class="fas fa-edit"></i> Modifier</a>
+			<button>  
+			 <a href="{{ path('api_generate_pdf', {id : reservation.idUser , trajet : reservation.idTrajet })}}" class="btn btn-primary" id="showPdfButton">
+			 See your reservation
+			 </a></button>
+			 
+          <br>
+<br>
+
+      <br>
+      <br>
+          </div>
+        </div>
+      </div>
+	  <div class="pagination">
+		{{ knp_pagination_render(pagination) }}
+	</div>
+    </div>
+	
+  {% endfor %}
+</div>
+
+	</div>
+
+	<a href="{{ path('app_trajet_index_client') }}"
+
+    
+{% endblock %}

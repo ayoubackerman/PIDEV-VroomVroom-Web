@@ -1,0 +1,100 @@
+{% extends 'base1.html.twig' %}
+
+{% block title %}Reponse index
+{% endblock %}
+
+{% block body %}
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+	<script>
+		$(document).ready(function () {
+$("#myInput").on("keyup", function () {
+var value = $(this).val().toLowerCase();
+$("#myTable tr").filter(function () {
+$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+});
+})
+});
+	</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+	<script>
+		$(document).ready(function () {
+$("#myInputs").on("keyup", function () {
+var value = $(this).val().toLowerCase();
+$("#myTables tr").filter(function () {
+$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+});
+})
+});
+	</script>
+	<h1>Reclamation index</h1>
+	<table class="table table-striped" id="myTable">
+		<thead>
+			<tr>
+				<th>Reclamation</th>
+				<th>Resolution</th>
+				<th>TypeReclamation</th>
+				<th>Temps</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for reclamation in reclamations %}
+				<tr>
+
+					<td>{{ reclamation.reclamation }}</td>
+					<td>{{ reclamation.resolution }}</td>
+					<td>{{ reclamation.typeReclamation }}</td>
+					<td>{{ reclamation.temps ? reclamation.temps|date('Y-m-d H:i:s') : '' }}</td>
+					<td>
+						<a href="{{ path('app_reclamation_show', {'idReclamation': reclamation.idReclamation}) }}">show</a>
+						<a href="{{ path('app_reclamation_edit', {'idReclamation': reclamation.idReclamation}) }}">edit</a>
+						<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ModalLoginForm">
+							<a href="{{ path('repondre', {'id': reclamation.idReclamation}) }}">repondre</a>
+						</button>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="7">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<h1>Reponse index</h1>
+	<input type="search" id="myInputs" class="form-control pl-6" placeholder="Search reponse"/>
+	<table class="table" id="myTables">
+		<thead>
+			<tr>
+				<th>IdReponse</th>
+				<th>IdReclamation</th>
+				<th>IdUser</th>
+				<th>Reponse</th>
+				<th>Temps</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for reponse in reponses %}
+				<tr>
+					<td>{{ reponse.idReponse }}</td>
+					<td>{{ reponse.idReclamation }}</td>
+					<td>{{ reponse.idUser }}</td>
+					<td>{{ reponse.reponse }}</td>
+					<td>{{ reponse.temps ? reponse.temps|date('Y-m-d H:i:s') : '' }}</td>
+					<td>
+						<a href="{{ path('app_reponse_show', {'idReponse': reponse.idReponse}) }}">show</a>
+						<a href="{{ path('app_reponse_edit', {'idReponse': reponse.idReponse}) }}">edit</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="6">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<a href="{{ path('app_reponse_new') }}">Create new</a>
+
+
+{% endblock %}

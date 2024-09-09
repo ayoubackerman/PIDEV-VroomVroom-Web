@@ -1,0 +1,135 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Trajet index{% endblock %}
+
+{% block body %}
+<div class="main-panel">
+
+    <div class="content-wrapper">
+        <div class="page-header">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                </ol>
+            </nav>
+        </div>
+    <div class="row ">
+        <div class="col-12 grid-margin">
+            <div class="card">
+                <div class="card-body">
+                    <div style="display: flex">
+                        <div class="col-md-5">
+                        </div>
+<form method="post" class="forms-sample" style="margin-left: -42px ;margin-top:20px;" >
+                            <div class="form-group col-md-4" style="display: flex; width: 100%!important; margin: 0px!important;">
+
+                                <div class="form-check">
+                                    <label class="form-check-label" style="width: 92px;margin-left: -2px;margin-right: 10px;">
+                                        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="villeDepart">villeDepart</label>
+                                </div>
+                                <div class="form-check">
+                                    <label class="form-check-label" style="width: 86px;margin-left: -2px;margin-right: 10px;">
+                                        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="villeDarrive" >villeDarrive</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <label class="form-check-label" style="width: 86px;margin-left: -2px;margin-right: 10px;">
+                                        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="modePaiement" >modePaiement</label>
+                                </div>
+
+                                <button type="Submit" class="btn btn-success btn-fw" style="margin: auto; background-color:#009cff; ">Trier</button>
+                            </div>
+                        </form>
+
+                    </div>
+                    <br>
+                    <div class="col-lg-17">
+ <div class="card">
+ <div class="card-body">
+ <ul class="navbar-nav w-100" style="margin-top: 15px;">
+                <ul class="navbar-nav w-100" style="margin-top:3px;">
+                        <li class="nav-item w-100">
+                
+            <div class="row" style="display: flex;align-items: center;justify-content: center;margin-top :40px">
+ 
+                            <form name="Search-method" id="Search-method"method="post" class="forms-sample" style="display: flex">
+                                <div class="form-group col-md-5">
+
+                                    <select name="optionsearch" class="js-example-basic-single" style="width: 200px;height: 38px; color: white; background-color: #009CFF; border-radius: 4px;text-align: center;border: 2px solid #0090e7;margin-right: 15px;">
+                                        <option value="">Choisi un Critére</option>
+                                        <option value="villeDepart">villeDepart</option>
+                                        <option value="villeDarrive">villeDarrive</option>
+                                        <option value="modePaiement">modePaiement</option>
+                                       
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-7">
+                                    <div class="input-group">
+                                        <input name="Search" type="text" class="form-control" placeholder="Recherche" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-sm btn-primary" type="Submit">Chercher</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </li>
+                    </ul>
+<br>
+<br>
+
+
+<h1 style="color: #007bff; font-family: 'Times New Roman', Times, serif;">
+    <i class="fas fa-car"></i>  Liste Des Trajets
+</h1>
+   <br>
+   <br>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdTrajet</th>
+                <th>VilleDepart</th>
+                <th>VilleDarrive</th>
+                <th>Prix</th>
+                <th>NbrPlace</th>
+                 <th>IdUser</th>
+                <th>Date</th>
+                <th>ModePaiement</th>
+                <th>actions</th>
+                <th>Localisation</th>
+            
+            </tr>
+        </thead>
+        <tbody>
+        {% for trajet in trajets %}
+            <tr>
+                <td>{{ trajet.idTrajet }}</td>
+                <td>{{ trajet.villeDepart }}</td>
+                <td>{{ trajet.villeDarrive }}</td>
+                <td>{{ trajet.prix }}</td>
+                <td>{{ trajet.nbrPlace }}</td>
+                 <td>{{ trajet.idUser }}</td>
+                <td>{{ trajet.date }}</td>
+                <td>{{ trajet.modePaiement }}</td>
+                <td>
+
+
+                    <a href="{{ path('app_trajet_show', {'idTrajet': trajet.idTrajet}) }}" class="btn btn-square btn-outline-success m-2"><i class="fa fa-eye"></i></a>
+                    <a href="{{ path('app_trajet_edit', {'idTrajet': trajet.idTrajet}) }}"class="btn btn-square btn-outline-primary m-2" ><i class="fas fa-edit"></i></a>
+                </td>
+                <td>
+<a href="{{ path('app_trajet_map', {'idTrajet': trajet.idTrajet}) }}" class="btn btn-info rounded-pill m-2" ><i class="fas fa-location-arrow"></i></a>
+                </td>
+
+
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_trajet_new') }}" class="btn btn-primary m-2" style="background-color: #007bff; border-color: #007bff;">Ajouter</a>
+
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reclamation index
+{% endblock %}
+
+{% block body %}
+	<!-- Pagination -->
+
+
+	<div class="row" style="display: flex;align-items: center;justify-content: flex-end;margin-top:93px;margin-left: -768px;margin-rigth:-129px" ;>
+		<div class="col-lg-8">
+			<div class="card">
+				<div class="card-body">
+					<div class="col-xs-12">
+
+						<div lass="wheel-header text-center marg-lg-t140 marg-lg-b340 marg-md-t140 marg-md-b140 marg-sm-t70 ">
+							filter</div>
+					</div>
+					<form id="filters">
+
+
+						{% for type in types %}
+							<ul>
+								<li>
+									<input type="checkbox" name="divisions[]" id="divi{{type.typeReclamation}}" value="{{type.typeReclamation}}"/>
+									<label>{{type.typeReclamation}}</label>
+								</li>
+							</ul>
+						{% endfor %}
+
+					</form>
+
+					<a href="{{ path('app_reclamation_new') }}" class="wheel-cheader-but">Create new</a>
+
+					<div id="content">
+						{% include "reclamation/_content.html.twig"%}
+
+					</div>
+
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<br><a style=" margin-left: 643px ;"></a>
+
+	{{ knp_pagination_render(reclamations) }}<br><br>
+
+
+	<br>
+{% endblock %}
+{% block javascripts %}
+
+	<script data-cfasync="false" src="{{asset('../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('assets/js/jquery-2.2.4.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('assets/js/bootstrap.min.js')}}"></script>
+	<!-- count -->
+	<script type="text/javascript" src="{{asset('assets/js/jquery.countTo.js')}}"></script>
+	<!-- google maps -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY" type="text/javascript"></script>
+	<!-- swiper -->
+	<script type="text/javascript" src="{{asset('assets/js/idangerous.swiper.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('assets/js/equalHeightsPlugin.js')}}"></script>
+	<script type="text/javascript" src="{{asset('assets/js/jquery.datetimepicker.full.min.js')}}"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script type="text/javascript" src="{{asset('assets/js/bootstrap-select.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('assets/js/index.js')}}"></script>
+	<script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
+	<script src="//code.jquery.com/jquery.js"></script>
+	<script src="{{asset('assets/js/filter.js')}}"></script>
+
+{% endblock %}

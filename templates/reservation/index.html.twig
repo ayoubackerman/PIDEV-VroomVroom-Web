@@ -1,0 +1,55 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Reservation index{% endblock %}
+
+{% block body %}
+
+  <br>
+  <br>
+
+  <h1 style="color: #007bff; font-family: 'Times New Roman', Times, serif;">
+    <i class="fas fa-book"></i> Reservation index
+</h1>
+
+
+
+<br>
+  <br>
+    <table class="table" id="myTable">
+        <thead>
+            <tr>
+                <th>IdReservation</th>
+                <th>IdTrajet</th>
+                <th>IdUser</th>
+                <th>actions</th>
+
+            </tr>
+        </thead>
+        <tbody>
+        <input type="search" id="myInput" class="form-control pl-6" placeholder="Search "/><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script><script>$(document).ready(function () {$("#myInput").on("keyup", function () {var value = $(this).val().toLowerCase();$("#myTable tr ").filter(function () {$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)});})});</script>
+
+        {% for reservation in reservations %}
+            <tr>
+                <td>{{ reservation.idReservation }}</td>
+                 <td>{{ reservation.idTrajet }}</td>
+                <td>{{ reservation.idUser }}</td>
+            
+                <td>
+                    <a href="{{ path('app_reservation_show', {'idReservation': reservation.idReservation}) }}"class="btn btn-square btn-outline-success m-2"><i class="fa fa-eye"></i></a>
+                    <a href="{{ path('app_reservation_edit', {'idReservation': reservation.idReservation}) }}"class="btn btn-square btn-outline-primary m-2" ><i class="fas fa-edit"></i></a>
+                   <a href="{{ path('app_qr_codes', {'idReservation': reservation.idReservation}) }}">qrcode</a>
+                </td>
+                
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+   <a href="{{ path('app_reservation_new') }}" class="btn btn-primary m-2" style="background-color: #007bff; border-color: #007bff;">Ajouter</a>
+
+    
+{% endblock %}

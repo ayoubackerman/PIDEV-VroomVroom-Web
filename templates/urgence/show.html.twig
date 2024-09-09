@@ -1,0 +1,46 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Urgence{% endblock %}
+
+{% block body %}
+    <h1>Urgence</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>IdUrgence</th>
+                <td>{{ urgence.idUrgence }}</td>
+            </tr>
+            <tr>
+                <th>IdTrajet</th>
+                <td>{{ urgence.idTrajet }}</td>
+            </tr>
+            <tr>
+                <th>IdVoiture</th>
+                <td>{{ urgence.idVoiture }}</td>
+            </tr>
+            <tr>
+                <th>Localisation</th>
+                <td>{{ urgence.localisation }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ urgence.description }}</td>
+            </tr>
+            <tr>
+                <th>Statuts</th>
+                <td>{{ urgence.statuts }}</td>
+            </tr>
+            <tr>
+                <th>Temps</th>
+                <td>{{ urgence.temps }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_urgence_index') }}">back to list</a>
+
+    <a href="{{ path('app_urgence_edit', {'idUrgence': urgence.idUrgence}) }}">edit</a>
+
+    {{ include('urgence/_delete_form.html.twig') }}
+{% endblock %}

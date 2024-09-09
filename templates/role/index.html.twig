@@ -1,0 +1,48 @@
+{% extends 'base1.html.twig' %}
+
+{% block title %}Role index{% endblock %}
+
+{% block body %}
+<div style="margin-top:20px;">
+    <h1>Role index</h1>
+    <input type="search" id="myInput" class="form-control pl-6" placeholder="Search role "/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+$("#myInput").on("keyup", function () {
+var value = $(this).val().toLowerCase();
+$("#myTable tr").filter(function () {
+$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+});
+})
+});
+</script>
+    <table class="table" style="margin-top:20px;" id="myTable">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Roles</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for role in roles %}
+            <tr>
+                <td>{{ role.id }}</td>
+                <td>{{ role.roles }}</td>
+                <td>
+                    <a href="{{ path('app_role_show', {'id': role.id}) }}">show</a>
+                    <a href="{{ path('app_role_edit', {'id': role.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_role_new') }}">Create new</a>
+</div>
+{% endblock %}

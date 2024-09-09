@@ -1,0 +1,46 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}VoitureUrgence{% endblock %}
+
+{% block body %}
+    <h1>VoitureUrgence</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>IdVoiture</th>
+                <td>{{ voiture_urgence.idVoiture }}</td>
+            </tr>
+            <tr>
+                <th>Modele</th>
+                <td>{{ voiture_urgence.modele }}</td>
+            </tr>
+            <tr>
+                <th>Marque</th>
+                <td>{{ voiture_urgence.marque }}</td>
+            </tr>
+            <tr>
+                <th>Matricule</th>
+                <td>{{ voiture_urgence.matricule }}</td>
+            </tr>
+            <tr>
+                <th>NombrePlace</th>
+                <td>{{ voiture_urgence.nombrePlace }}</td>
+            </tr>
+            <tr>
+                <th>Statuts</th>
+                <td>{{ voiture_urgence.statuts }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ voiture_urgence.image }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_voiture_urgence_index') }}">back to list</a>
+
+    <a href="{{ path('app_voiture_urgence_edit', {'idVoiture': voiture_urgence.idVoiture}) }}">edit</a>
+
+    {{ include('voiture_urgence/_delete_form.html.twig') }}
+{% endblock %}

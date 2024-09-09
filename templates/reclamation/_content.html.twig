@@ -1,0 +1,43 @@
+<h4 style="margin-left:800px">
+	total Reclamation :
+	{{total}}
+</h4>
+<table class="table table-striped" id="myTable">
+	<thead>
+		<tr>
+			<!--<th>IdReclamation</th>
+																													                <th>IdUser</th>-->
+			<th>Reclamation</th>
+			<th>Resolution</th>
+			<th>TypeReclamation</th>
+			<th>Temps</th>
+			<th>actions</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		{% for reclamation in reclamations %}
+			<tr>
+				{# <td>{{ reclamation.idReclamation }}</td>
+																																						                <td>{{ reclamation.idUser }}</td> #}
+				<td>{{ reclamation.reclamation }}</td>
+				<td>{{ reclamation.resolution }}</td>
+				<td>{{ reclamation.typeReclamation }}</td>
+				<td>{{ reclamation.temps ? reclamation.temps|date('Y-m-d H:i:s') : '' }}</td>
+				<td>
+					<a href="{{ path('app_reclamation_show', {'idReclamation': reclamation.idReclamation}) }}" class="wheel-cheader-but">show</a>
+					<a href="{{ path('app_reclamation_edit', {'idReclamation': reclamation.idReclamation}) }}" class="wheel-cheader-but">edit</a>
+					{# <a href="{{ path('repondre', {'id': reclamation.idReclamation}) }}">repondre</a> #}
+
+				</td>
+
+
+			</tr>
+			{% else %}
+		{% endfor %}
+
+
+	</tbody>
+
+
+</table>

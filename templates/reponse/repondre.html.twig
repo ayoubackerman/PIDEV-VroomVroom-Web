@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+	<div class="row" style="margin-left:300px">
+		<div style="display: flex;align-items: center;justify-content: center;margin-top: 90px; padding: 15px;">
+			<div class="card">
+				<div
+					class="card-body">
+					<!-- General Form Elements -->
+					{{ form_start(f,{attr:{novalidate:'novalidate'}}) }}
+
+				</br>
+			</div>
+			<div style="display:none">
+				<div class="col-12">
+					<label for="youraddr" class="form-label">temps</label>
+					{{ form_widget(f.temps,{'attr':{'class':'form-control'}}) }}
+				</div>
+				<label for="youraddr" class="form-label">id User</label>
+				{# {{ form_widget(f.idUser,{'attr':{'class':'form-control'}}) }} #}
+				{{ form_row(f.idUser, { 'value': reclamation.idUser }) }}
+				<div class="invalid-feedback"></div>
+				{{ form_errors(f.idUser,{'attr':{'class':'text-danger'}}) }}
+			</div>
+
+
+			{# <label for="youraddr" class="form-label">reclamation</label>
+																				{{ form_widget(f.reclamation,{'attr':{'class':'form-control','value':'{{reclamation.}}'}}) }}
+																				<div class="invalid-feedback"></div>
+																				{{ form_errors(f.reclamation,{'attr':{'class':'text-danger'}}) }} #}
+
+
+			{# <label for="youraddr" class="form-label">reclamation</label> #}
+			{{ form_row(f.idReclamation, { 'value': reclamation.idReclamation }) }}
+			<div class="invalid-feedback"></div>
+			{{ form_errors(f.idReclamation,{'attr':{'class':'text-danger'}}) }}
+
+			<label for="youraddr" class="form-label">reponse</label>
+			{{ form_widget(f.reponse,{'attr':{'class':'form-control'}}) }}
+			<div class="invalid-feedback"></div>
+			{{ form_errors(f.reponse,{'attr':{'class':'text-danger'}}) }}
+
+
+			<div class="col-sm-10" id="2" style="display: flex;align-items: center;justify-content: center">
+				{{ form_widget(f.ajouter,{'attr':{'class':'btn btn-primary'}}) }}
+				{{ form_end(f) }}
+				<script src="{{asset('public/logjs.js')}}"></script>
+			</div>
+		</div>
+	</div>
+</div>{% endblock %}

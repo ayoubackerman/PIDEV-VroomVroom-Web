@@ -1,0 +1,68 @@
+{# {% use 'WebewebJasperReportsServerBundle:BadWords:BadWordsValidator' with validator as BadWordsValidator %} #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}New Reclamation
+{% endblock %}
+
+{% block body %}
+
+	<div class="wheel-start">
+		<div class="container padd-lr0" style="margin-left: 1065px;">
+			<div class="col-lg-6 col-lg-pull-6  padd-lr0 " style="margin-top: -183px;">
+				<div
+					class="wheel-start-form">
+
+					<!-- General Form Elements -->
+					{{ form_start(f,{attr:{novalidate:'wheel-start-form'}}) }}
+
+					
+					<label for="input-val12">
+						<span>reclamation</span>
+							
+{{ form_widget(f.reclamation, {'attr': {'class': 'form-control'}})}}
+{{ form_errors( f.reclamation,{'attr': {'class': 'text-danger'}}) }}
+					</label>
+
+					<label for="input-val12">
+						<span>typereclamation</span>
+						{{ form_widget(f.typeReclamation,{'attr':{'class':'form-control'}}) }}
+						{{ form_errors(f.typeReclamation,{'attr':{'class':'text-danger'}}) }}
+					</label>
+
+
+					<center>{{ form_widget(f.Valider,{'attr':{'class':'wheel-btn'}}) }}</center>
+				</div>
+			</div>
+
+
+			<div style="display:none">
+				<div class="col-12">
+					<label for="youraddr" class="form-label">resolution</label>
+					{{ form_widget(f.resolution,{'attr':{'class':'form-control'}}) }}
+					<div class="invalid-feedback">resolution</div>
+					{{ form_errors(f.resolution,{'attr':{'class':'text-danger'}}) }}
+
+					<label for="youraddr" class="form-label">temps</label>
+					{{ form_widget(f.temps,{'attr':{'class':'form-control'}}) }}
+					<div class="invalid-feedback">temps</div>
+					{{ form_errors(f.temps,{'attr':{'class':'text-danger'}}) }}
+
+					<label for="input-val12">
+						<span>iduser</span>
+{{ form_widget(f.idUser, {'attr': {'class': 'form-control', 'value': app.user.id}}) }}
+
+						{{ form_errors(f.idUser,{'attr':{'class':'text-danger'}}) }}
+				
+
+					</label>
+
+
+
+				</div>
+			</div>
+			{{ form_end(f) }}
+			<script src="{{asset('public/logjs.js')}}"></script>
+		</div>
+	</div>
+</div>{% endblock %}
